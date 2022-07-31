@@ -1,10 +1,14 @@
 from distutils.core import setup
+from pycloc import __version__
 
 setup(
     name='pycloc',
-    version='1.0',
+    version=__version__,
     description='Python implementation of the cloc command.',
     author='Colin Tenaguillo',
     author_email='tenaguillo.c@gmail.com',
-    packages=['distutils', 'distutils.command'],
+    py_modules=['pycloc'],
+    entry_points={
+        'console_scripts': ['pycloc=pycloc.__main__:main'],
+    },
 )
