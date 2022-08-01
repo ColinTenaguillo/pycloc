@@ -11,4 +11,5 @@ setup(
     entry_points={
         'console_scripts': ['pycloc=pycloc.__main__:main'],
     },
+    requires=["tabulate==0.8.10"]
 )
