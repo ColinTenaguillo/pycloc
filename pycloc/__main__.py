@@ -1,29 +1,49 @@
+import os
 import sys
-from pycloc.language import Language
+from typing import List
+from pycloc.config import LANGUAGES
 from pycloc.utils import listdir
 from pycloc.utils.countlines import countlines
 from tabulate import tabulate
 
-def get_summary(path: str):
+def better_sum(random_list: List):
+    total = 0
+    for element in random_list:
+        if isinstance(element, int) or element.isdigit():
+            total += int(element)
+
+    return total
+
+
+def compute_data(path: str):
     file_paths = listdir(path)
-
-    language = Language("CPP")
     for path in file_paths:
-        count = countlines(path)
+        _filename, file_extension = os.path.splitext(path)
+        try:
+            language = next(v for k, v in LANGUAGES.items() if file_extension in k)
+        except StopIteration:
+            pass
 
+        count = countlines(
+            path, 
+            language.single_line_comments, 
+            language.multiline_comments_regex
+        )
         if count is not None:
             language.add_count(**count)
 
-    return language.format()
+    data = [lang.format() for lang in LANGUAGES.values() if lang.files > 0]
+    total = [better_sum(i) for i in zip(*data)]
+    total[0] = "SUM :"
+    data.append(total)
+    return data
 
 def main():
-    headers = ["Language", "Files", "Lines", "Codes", "Comments", "Blanks"]
-
     dir_path = sys.argv[1]
-    data = get_summary(dir_path)
-    
-    table = tabulate([data, data], headers=headers, tablefmt="presto")
-    print(table)
+    data = compute_data(dir_path)
+    headers = ["Language", "Files", "Lines", "Codes", "Comments", "Blanks"]
+    table = tabulate(data, headers=headers, tablefmt="presto")
+
     print(table)
 
 if __name__ == "__main__":

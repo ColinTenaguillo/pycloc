@@ -7,9 +7,18 @@ class Language:
     codes: int = 0
     comments: int = 0
     blanks: int = 0
+    single_line_comments: List[str] = []
+    multiline_comments_regex: List[str] = []
 
-    def __init__(self, language_name) -> None:
+    def __init__(
+        self, 
+        language_name: str, 
+        single_line_comments: List[str], 
+        multiline_comments_regex: List[str]
+    ) -> None:
         self.language_name = language_name
+        self.single_line_comments = single_line_comments
+        self.multiline_comments_regex = multiline_comments_regex
 
     def add_count(self, codes, comments, blanks) -> None:
         self.files += 1

@@ -3,7 +3,7 @@
 This is a multi-line comment
 The blanks in multi-line comment are counted as Blanks
 
-// Test comment in multiline comment, should not be counted twice.
+// Test single line comment in multiline comment, should not be counted twice.
 */
 
 /*
