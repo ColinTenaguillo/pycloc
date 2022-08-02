@@ -17,6 +17,8 @@ pip install -e .
 pycloc <path_to_project_directory_or_file>
 ```
 
+## Result
+
 ```bash
 pycloc Osiris\ 2
 ```
