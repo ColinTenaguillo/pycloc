@@ -13,8 +13,16 @@ pip install -e .
 
 ## Usage
 
+Use for project
+
 ```
 pycloc <path_to_project_directory_or_file>
+```
+
+Run tests
+
+```
+pytest tests
 ```
 
 ## Result
