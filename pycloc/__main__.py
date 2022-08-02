@@ -14,10 +14,13 @@ def compute_data(path: str):
 
     Returns:
         List[List[str|int]]: Returns the list of data for each language
-    """    
-    file_paths = listdir(path)
+    """
+    isDirectory = os.path.isdir(path)
+    file_paths = listdir(path) if isDirectory else [path]
     for path in file_paths:
         _filename, file_extension = os.path.splitext(path)
+        if not file_extension:
+            continue
         try:
             language = next(v for k, v in LANGUAGES.items() if file_extension in k)
         except StopIteration:
@@ -32,6 +35,7 @@ def compute_data(path: str):
             language.add_count(**count)
 
     data = [lang.format() for lang in LANGUAGES.values() if lang.files > 0]
+    reset = [lang.reset() for lang in LANGUAGES.values()]
     sum_total = [better_sum(i) for i in zip(*data)]
     sum_total[0] = "SUM :"
     data.append(["----------", "----------", "----------", "----------", "----------", "----------"])

@@ -1,4 +1,4 @@
-from pycloc2 import __version__
+from pycloc import __version__
 
 
 def test_version():

@@ -36,3 +36,9 @@ class Language:
             self.comments, 
             self.blanks
         ]
+
+    def reset(self) -> None:
+        self.files = 0
+        self.codes = 0
+        self.comments = 0
+        self.blanks = 0

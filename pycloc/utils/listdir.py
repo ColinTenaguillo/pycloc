@@ -10,8 +10,8 @@ def listdir(path: str) -> List[str]:
 
     Returns:
         List[str]: path to files in directory and subdirectory
-    """    
-    listOfFiles: List[str] = list()
+    """
+    listOfFiles: List[str] = []
     for (dirpath, dirnames, filenames) in os.walk(path):
         listOfFiles += [os.path.join(dirpath, file) for file in filenames]
 

@@ -14,7 +14,7 @@ pip install -e .
 ## Usage
 
 ```
-pycloc <path_to_project_directory>
+pycloc <path_to_project_directory_or_file>
 ```
 
 ```bash
@@ -24,9 +24,21 @@ pycloc Osiris\ 2
 ```bash
 Language    Files       Lines       Codes       Comments    Blanks
 ----------  ----------  ----------  ----------  ----------  ----------
-C++         106         53858       40232       7498        6128
+C++         29          36206       28209       3987        4010
 ----------  ----------  ----------  ----------  ----------  ----------
-SUM :       106         53858       40232       7498        6128
+SUM :       29          36206       28209       3987        4010
+```
+
+```bash
+pycloc lib\ 2
+```
+
+```bash
+Language    Files       Lines       Codes       Comments    Blanks
+----------  ----------  ----------  ----------  ----------  ----------
+RUBY        1482        294891      215208      46099       33584
+----------  ----------  ----------  ----------  ----------  ----------
+SUM :       1482        294891      215208      46099       33584
 ```
 
 ```bash
@@ -36,15 +48,15 @@ pycloc tests/files
 ```bash
 Language    Files       Lines       Codes       Comments    Blanks
 ----------  ----------  ----------  ----------  ----------  ----------
-C++         1           17          5           9           3
-RUBY        1           37          7           19          11
+C++         1           13          5           6           2
+RUBY        2           44          8           23          13
 ----------  ----------  ----------  ----------  ----------  ----------
-SUM :       2           54          12          28          14
+SUM :       3           57          13          29          15
 ```
 
-## Ruby
+## TODO
 
-There is an edge case i found on [stack overflow](https://stackoverflow.com/questions/2989762/multi-line-comments-in-ruby) that i didnt manage to find a solution for :
+There is an edge case in ruby i found on [stack overflow](https://stackoverflow.com/questions/2989762/multi-line-comments-in-ruby) that i didnt manage to resolve :
 
 ```ruby
 <<-DOC
